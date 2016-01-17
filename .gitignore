@@ -60,3 +60,9 @@ target/
 
 # PyCharm
 *.idea/
+
+#DB
+*.sqlite3
+
+# Static Collection
+static-collection/
