@@ -399,3 +399,13 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #0085a1;
 }
+
+form ul,
+form li {
+  list-style-type: none;
+}
+
+form ul {
+  margin: 0;
+  padding: 0;
+}

@@ -5,10 +5,10 @@ from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 
 
 class FormField(AbstractFormField):
-    page = ParentalKey('FormPage', related_name='form_fields')
+    page = ParentalKey('ContactUsFormPage', related_name='form_fields')
 
 
-class FormPage(AbstractEmailForm):
+class ContactUsFormPage(AbstractEmailForm):
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
 
