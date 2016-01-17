@@ -1,9 +1,8 @@
-from django.conf.urls import url
-
-# from .views import
-
-urlpatterns = [
-    # url(r'^(?P<slug>[-\w]+)', ArticlePageDetailView.as_view(), name='article_detail'),
-    # url(r'^$', ArticlePageListView.as_view(), name='articles_list'),
-
-]
+# from django.conf.urls import url
+#
+# from .views import ContactUsFormPageView
+#
+# urlpatterns = [
+#     url(r'^$', ContactUsFormPageView.as_view(), name='contact_us'),
+#
+# ]
