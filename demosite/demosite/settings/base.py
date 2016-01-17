@@ -81,7 +81,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': True
         },
+
     },
 ]
 
@@ -136,6 +138,9 @@ MEDIA_URL = '/media/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "demosite"
+
+# Taggit settings
+TAGGIT_CASE_INSENSITIVE = True
 
 CACHES = {
     'default': {
