@@ -1,0 +1,37 @@
+{% extends 'articles/base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block article_title %}{{ object.title }} - {% endblock article_title %}
+
+{% block header %}
+    {% image object.bg_image width-1400 as bg_image %}
+    <header class="intro-header" style="background-image: url({% if bg_image %}
+                {{ bg_image.url }}
+            {% else %}
+                {% static 'img/post-bg.jpg' %}
+            {% endif %});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ object.title }}</h1>
+                        <hr class="small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {{ object.body|richtext }}
+                    <a href="{{ object.external_ref }}" target="_blank" style="float: right;"><i>Source</i></a>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock content %}

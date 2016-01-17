@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ArticlePage, ArticleCategory
+
+admin.site.register(ArticlePage)
+
+class ArticleCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        "slug": (
+            "name",
+        )
+    }
+
+admin.site.register(ArticleCategory, ArticleCategoryAdmin)

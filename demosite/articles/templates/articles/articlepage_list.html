@@ -1,0 +1,79 @@
+{% extends 'articles/base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block title %}{% block article_title %}{% endblock article_title %}Articles{% endblock title %}
+{% block header %}{% include 'articles/includes/articlepage_header.html' %}{% endblock header %}
+{% block content %}
+<!-- Main Content -->
+    <div class="container">
+        {% for obj in object_list %}
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                        <a href="{% url 'article_detail' obj.slug %}">
+                            <h3 class="post-title">
+                                {{ obj.title }}
+                            </h3>
+                            {% if forloop.counter|divisibleby:"2" %}
+                                <div class="post-item clearfix">
+                                    {% image obj.bg_image width-300 style="float: right; margin-top: 35px" %}
+                                    {{ obj.standfirst|richtext }}
+                                </div>
+                            {% else %}
+                                <div class="post-item clearfix">
+                                    <div style="width: 50%; float: right;">{{ obj.standfirst|richtext }}</div>
+                                    {% image obj.bg_image width-300 style="margin-top: 35px"%}
+                                </div>
+                            {% endif %}
+                        </a>
+                        <p class="post-meta">Posted on {{ obj.first_published_at }}</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        {% empty %}
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p><i>No articles yet, come back soon for some quality content.</i></p>
+                </div>
+            </div>
+        {% endfor %}
+        <!-- Pager -->
+        <div class="row pager">
+            <ul class="pagination">
+              {% if page_obj.has_previous %}
+                <li>
+                  <a href="?page={{ page_obj.previous_page_number }}">
+                    <span>Previous</span>
+                  </a>
+                </li>
+              {% else %}
+                <li class="disabled">
+                  <a href="#">
+                    <span>Older</span>
+                  </a>
+                </li>
+              {% endif %}
+
+              {% for page in paginator.page_range %}
+                <li {% if page == page_obj.number %}class="active"{% endif %}>
+                  <a href="?page={{ page }}">{{ page }}</a>
+                </li>
+              {% endfor %}
+
+              {% if page_obj.has_next %}
+                <li>
+                  <a href="?page={{ page_obj.next_page_number }}">
+                    <span>Next</span>
+                  </a>
+                </li>
+              {% else %}
+                <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+                  <a href="#">
+                    <span>Newer</span>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

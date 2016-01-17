@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
-
 from django.db import models
 
-# Create your models here.
+
+class Post(models.Model):
+    article = models.ForeignKeyField('articles.Article')
+    user = models.ForeignKeyField('auth.User')
