@@ -6,3 +6,6 @@ This repo includes a small sqlite3 database with sample data. You can view the q
 
 # Emails
 The Gmail SMTP server is used to send out any emails coming from the *Contact Us* form. This form is configurable via its' relevant page in the admin, as it uses ```wagtailforms``` which can be used as a dynamic form builder.
+
+#Site-wide settings
+The social icons in the footer are configurable in the <a href="http://46.101.90.234/admin/">admin</a> by clicking on the ```Settings -> Social Media Settings``` menu item. This allows for the email address, github account and linkedIn profile URL to be changed.
